@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "runtime",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/urlaunched-com/Runtime",
+      "state" : {
+        "revision" : "ea112a73f7a8772a92b125ceeaaf61f1844466bd",
+        "version" : "2.2.6"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
+        "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "swiftui-udf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Maks-Jago/SwiftUI-UDF",
+      "state" : {
+        "revision" : "6232314e416330a7ef68e62e3eadb72875791747",
+        "version" : "1.4.7"
+      }
+    }
+  ],
+  "version" : 2
+}
