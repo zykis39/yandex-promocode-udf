@@ -57,6 +57,7 @@ struct PromocodeComponent: Component {
         .sheet(isPresented: props.$shareBottomSheetPresented, content: {
             ActivityViewController(activityItems: [String(props.promocode)])
         })
+        .colorScheme(.light)
     }
 }
 

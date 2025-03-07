@@ -5,6 +5,7 @@ public struct ContentView: View {
 
     public var body: some View {
         PromocodeContainer()
+            .background(.white, ignoresSafeAreaEdges: .all)
     }
 }
 
