@@ -49,7 +49,6 @@ extension PromocodeMiddleware {
     static func buildLiveEnvironment(for store: some Store<AppState>) -> Environment {
         Environment(
             loadPromocodes: {
-                print("buildLiveEnvironment")
                 return [.init(value: "LIVE1"), .init(value: "LIVE2"), .init(value: "LIVE3")]
             }
         )
@@ -58,7 +57,6 @@ extension PromocodeMiddleware {
     static func buildTestEnvironment(for store: some Store<AppState>) -> Environment {
         Environment(
             loadPromocodes: {
-                print("buildTestEnvironment")
                 return [.init(value: "TEST1"), .init(value: "TEST2"), .init(value: "TEST3")]
             }
         )

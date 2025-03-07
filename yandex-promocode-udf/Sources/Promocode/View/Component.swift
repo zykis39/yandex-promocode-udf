@@ -11,6 +11,10 @@ import UDF
 struct PromocodeComponent: Component {
     struct Props {
         var promocode: String
+        @Binding var shareBottomSheetPresented: Bool
+        var onLeftTapped: () -> Void
+        var onRightTapped: () -> Void
+        var onShareTapped: () -> Void
     }
     
     var props: Props
@@ -23,7 +27,7 @@ struct PromocodeComponent: Component {
                 .font(.system(size: 20))
             Spacer()
             HStack {
-                Button {} label: {
+                Button { props.onLeftTapped() } label: {
                     Image(systemName: "chevron.left.circle.fill")
                         .resizable()
                         .frame(width: 32, height: 32)
@@ -32,14 +36,14 @@ struct PromocodeComponent: Component {
                 Text(props.promocode)
                     .font(.system(size: 24))
                 Spacer()
-                Button {} label: {
+                Button { props.onRightTapped() } label: {
                     Image(systemName: "chevron.right.circle.fill")
                         .resizable()
                         .frame(width: 32, height: 32)
                 }.tint(.gray)
             }
             Spacer()
-            Button {} label: {
+            Button { props.onShareTapped() } label: {
                 Text("Поделиться")
                     .font(.system(size: 20))
                     .frame(maxWidth: .infinity)
@@ -50,13 +54,20 @@ struct PromocodeComponent: Component {
             
         }
         .padding(16)
+        .sheet(isPresented: props.$shareBottomSheetPresented, content: {
+            ActivityViewController(activityItems: [String(props.promocode)])
+        })
     }
 }
 
 #Preview {
     PromocodeComponent(
         props: .init(
-            promocode: "SLDJFUSQW"
+            promocode: "SLDJFUSQW",
+            shareBottomSheetPresented: .init(get: { false }, set: { _ in }),
+            onLeftTapped: {},
+            onRightTapped: {},
+            onShareTapped: {}
         )
     )
 }

@@ -6,7 +6,7 @@ struct YandexPromocodeUdfApp: App {
     var store: EnvironmentStore<AppState>
     
     init () {
-        let initialState = AppState(reducer: .init(selectedPromocode: .init(value: "123QWE")))
+        let initialState = AppState(reducer: .init(selectedPromocode: .init(value: "")))
         store = EnvironmentStore(initial: initialState, logger: .consoleDebug)
         store.subscribe(PromocodeMiddleware.self)
     }

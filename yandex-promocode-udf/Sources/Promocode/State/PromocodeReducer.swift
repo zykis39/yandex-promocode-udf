@@ -17,14 +17,19 @@ extension Actions {
     struct SelectPromocode: Action {
         let promocode: Promocode
     }
-    
+    struct PromocodeShareTapped: Action {}
+    struct SetBottomSheetVisible: Action {
+        let visible: Bool
+    }
     struct LoadPromocodes: Action {}
 }
 
 struct PromocodeReducer: Reducible {
     enum LoadingState { case none, loading }
+    enum ShareState { case hidden, presented }
     
     var state: LoadingState = .none
+    var shareState: ShareState = .hidden
     var promocodes: [Promocode] = []
     var selectedPromocode: Promocode?
     
@@ -65,8 +70,11 @@ struct PromocodeReducer: Reducible {
                 }
             }
         case let action as Actions.SelectPromocode:
-            print("PromocodeReducer Actions.SelectPromocode")
             selectedPromocode = action.promocode
+        case is Actions.PromocodeShareTapped:
+            shareState = .presented
+        case let action as Actions.SetBottomSheetVisible:
+            shareState = action.visible ? .presented : .hidden
         default:
             break
         }
